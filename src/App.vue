@@ -6,8 +6,23 @@ import Skill from './components/Skill.vue'
 import Projects from './components/Projects.vue'
 import Footer from './components/Footer.vue'
 import Contact from './components/Contact.vue'
-
 import Home from './views/Home.vue'
+import { onMounted } from "vue";
+onMounted(() => {
+  const sections = document.querySelectorAll(".section-anim");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  }, {
+    threshold: 0.2
+  });
+
+  sections.forEach(sec => observer.observe(sec));
+});
 </script>
 
 <template>
@@ -74,5 +89,17 @@ body {
 /* Smooth scroll */
 html {
   scroll-behavior: smooth;
+}
+
+.section-anim {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+/* aktif saat muncul */
+.section-anim.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>

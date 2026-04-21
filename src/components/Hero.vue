@@ -3,37 +3,55 @@
     <div class="container">
       <div class="row align-items-center">
 
-        <div class="col-md-6 text-white">
-          <h1 class="fw-bold display-4">
-            Hi, I'm <span class="highlight">Farrel</span>
-          </h1>
+          <div class="col-md-6 text-white">
 
-          <h4 class="text-secondary mb-3">
-            Student | Web Developer
-          </h4>
+            <h1 
+              class="fw-bold display-4"
+              data-aos="fade-up"
+              data-aos-delay="250"
+            >
+              Hi, I'm <span class="highlight">Farrel</span>
+            </h1>
 
-          <p class="mb-4">
-            I build modern and interactive websites using Vue.js.
-            Focused on clean design, performance, and user experience.
-          </p>
+            <h4 
+              class="text-secondary mb-3"
+              data-aos="fade-up"
+              data-aos-delay="250"
+            >
+              Student | Web Developer
+            </h4>
 
-          <div>
-            <a href="#projects" class="btn btn-primary me-2">
-              View Projects
-            </a>
-            <a href="#contact" class="btn btn-outline-light">
-              Contact Me
-            </a>
+            <p 
+              class="mb-4"
+              data-aos="fade-up"
+              data-aos-delay="350"
+            >
+              I build modern and interactive websites using Vue.js.
+              Focused on clean design, performance, and user experience.
+            </p>
+
+            <div data-aos="fade-up" data-aos-delay="450">
+              <a href="#projects" class="btn btn-primary me-2">
+                View Projects
+              </a>
+              <a href="#contact" class="btn btn-outline-light">
+                Contact Me
+              </a>
+            </div>
+
           </div>
-        </div>
 
-        <div class="col-md-6 text-center mt-5 mt-md-0">
-          <img
-            src="/src/assets/profile.png"
-            alt="profile"
-            class="img-fluid profile-img"
-          />
-        </div>
+          <div class="col-md-6 text-center mt-5 mt-md-0">
+
+            <img
+              src="/src/assets/profile.png"
+              alt="profile"
+              class="img-fluid profile-img"
+              data-aos="zoom-in"
+              data-aos-delay="550"
+            />
+
+          </div>
 
       </div>
     </div>
@@ -60,11 +78,11 @@
 
 /* Foto */
 .profile-img {
-  max-width: 300px;
-  border-radius: 20px;
-
-  /* Glow halus */
-  box-shadow: 0 0 25px rgba(59, 130, 246, 0.3);
+  max-width: 350px;
+  background: none;
+  border: none;
+  object-fit: contain;
+  filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.3));
   transition: 0.3s;
 }
 
@@ -72,6 +90,9 @@
   transform: scale(1.05);
 }
 
+.highlight {
+  color: #3b82f6;
+}
 /* Tombol */
 .btn-primary {
   background-color: #3b82f6;

@@ -39,3 +39,32 @@
     </div>
   </nav>
 </template>
+
+<style>
+.nav-link {
+  position: relative;
+  color: #ccc;
+  transition: 0.3s;
+}
+
+/* underline animasi tengah */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: #3b82f6;
+  transition: 0.3s;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover {
+  color: white;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+</style>
