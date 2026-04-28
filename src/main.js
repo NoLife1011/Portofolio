@@ -8,10 +8,21 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+app.mount('#app')
+
+// Konfigurasi AOS agar animasi berulang setiap scroll
 AOS.init({
     duration: 800,
-    once: false, // animasi hanya sekali
+    once: false,     // false = animasi akan berulang
+    mirror: true,    // true = animasi juga aktif saat scroll ke atas
+    offset: 50,      // jarak trigger dari viewport
     easing: 'ease-in-out',
-    mirror: true
+    delay: 0,
+    disable: false
+})
+
+// Refresh AOS setelah komponen terload
+window.addEventListener('load', () => {
+    AOS.refresh()
 })
