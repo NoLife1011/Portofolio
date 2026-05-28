@@ -1,16 +1,12 @@
 <template>
   <footer class="footer">
+    <div class="footer-glow"></div>
     <div class="container">
-      
-      <!-- Main Footer Content -->
       <div class="footer-content">
-        
-        <!-- Logo & Description -->
+        <!-- Brand -->
         <div class="footer-brand">
           <div class="brand-wrapper">
-            <h2 class="footer-logo">
-              Farrel<span class="logo-dot">.</span>
-            </h2>
+            <h2 class="footer-logo">Farrel<span class="logo-dot">.</span></h2>
             <p class="footer-description">
               Building modern web experiences with Vue.js.<br>
               Focused on clean design and great performance.
@@ -18,7 +14,7 @@
           </div>
         </div>
 
-        <!-- Quick Links -->
+        <!-- Links -->
         <div class="footer-links">
           <div class="links-column">
             <h6 class="links-title">Explore</h6>
@@ -29,7 +25,6 @@
               <li><a href="#contact">Contact</a></li>
             </ul>
           </div>
-
           <div class="links-column">
             <h6 class="links-title">Resources</h6>
             <ul>
@@ -39,101 +34,60 @@
               <li><a href="#">FAQ</a></li>
             </ul>
           </div>
-
           <div class="links-column">
             <h6 class="links-title">Connect</h6>
             <ul class="social-links">
-              <li>
-                <a href="https://github.com/NoLife1011" target="_blank" class="social-link">
-                  <i class="bi bi-github"></i>
-                  <span>GitHub</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://instagram.com/f_ar_el" target="_blank" class="social-link">
-                  <i class="bi bi-instagram"></i>
-                  <span>Instagram</span>
-                </a>
-              </li>
-              <li>
-                <a href="#" target="_blank" class="social-link">
-                  <i class="bi bi-linkedin"></i>
-                  <span>LinkedIn</span>
-                </a>
-              </li>
-              <li>
-                <a href="#" target="_blank" class="social-link">
-                  <i class="bi bi-twitter"></i>
-                  <span>Twitter</span>
-                </a>
-              </li>
+              <li><a href="https://github.com/NoLife1011" target="_blank" class="social-link"><i class="bi bi-github"></i><span>GitHub</span></a></li>
+              <li><a href="https://instagram.com/f_ar_el" target="_blank" class="social-link"><i class="bi bi-instagram"></i><span>Instagram</span></a></li>
+              <li><a href="#" target="_blank" class="social-link"><i class="bi bi-linkedin"></i><span>LinkedIn</span></a></li>
+              <li><a href="#" target="_blank" class="social-link"><i class="bi bi-twitter"></i><span>Twitter</span></a></li>
             </ul>
           </div>
         </div>
-
       </div>
 
-      <!-- Contact Info Row -->
+      <!-- Contact row -->
       <div class="contact-row">
-        <div class="contact-item">
-          <i class="bi bi-envelope-fill"></i>
-          <a href="mailto:ezfarelez1011@gmail.com">ezfarelez1011@gmail.com</a>
-        </div>
+        <div class="contact-item"><i class="bi bi-envelope-fill"></i><a href="mailto:ezfarelez1011@gmail.com">ezfarelez1011@gmail.com</a></div>
         <div class="contact-divider"></div>
-        <div class="contact-item">
-          <i class="bi bi-whatsapp"></i>
-          <a href="#">+62 812-3456-7890</a>
-        </div>
+        <div class="contact-item"><i class="bi bi-whatsapp"></i><a href="#">+62 812-3456-7890</a></div>
         <div class="contact-divider"></div>
-        <div class="contact-item">
-          <i class="bi bi-geo-alt-fill"></i>
-          <span>Indonesia</span>
-        </div>
+        <div class="contact-item"><i class="bi bi-geo-alt-fill"></i><span>Indonesia</span></div>
       </div>
 
-      <!-- Newsletter Section -->
+      <!-- Newsletter -->
       <div class="newsletter-section">
         <div class="newsletter-content">
           <p class="newsletter-text">Get notified about my latest projects</p>
           <form @submit.prevent="subscribeNewsletter" class="newsletter-form">
-            <input 
-              type="email" 
-              v-model="newsletterEmail"
-              placeholder="Your email address"
-              required
-            >
+            <input type="email" v-model="newsletterEmail" placeholder="Your email address" required />
             <button type="submit">
               Subscribe
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </button>
           </form>
           <p v-if="newsletterSuccess" class="newsletter-success">
-            <i class="bi bi-check-circle-fill"></i> Subscribed successfully!
+            <i class="bi bi-check-circle-fill"></i> Subscribed!
           </p>
         </div>
       </div>
 
       <!-- Copyright -->
       <div class="copyright">
-        <p>&copy; 2026 Farrel. All rights reserved.</p>
+        <p>© 2026 Farrel. All rights reserved.</p>
         <div class="copyright-links">
           <a href="#">Privacy Policy</a>
           <span class="divider">|</span>
-          <a href="#">Terms of Service</a>
+          <a href="#">Terms</a>
         </div>
       </div>
 
-      <!-- Back to Top Button -->
-      <button 
-        v-show="showBackToTop" 
-        @click="scrollToTop" 
-        class="back-to-top"
-      >
+      <!-- Back to top -->
+      <button v-show="showBackToTop" @click="scrollToTop" class="back-to-top" aria-label="Back to top">
         <i class="bi bi-arrow-up"></i>
       </button>
-
     </div>
   </footer>
 </template>
@@ -145,414 +99,207 @@ const showBackToTop = ref(false)
 const newsletterEmail = ref('')
 const newsletterSuccess = ref(false)
 
-const handleScroll = () => {
-  showBackToTop.value = window.scrollY > 500
-}
-
-const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  })
-}
-
+const handleScroll = () => { showBackToTop.value = window.scrollY > 500 }
+const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 const subscribeNewsletter = () => {
   if (newsletterEmail.value) {
-    console.log('Newsletter subscription:', newsletterEmail.value)
     newsletterSuccess.value = true
     newsletterEmail.value = ''
-    
-    setTimeout(() => {
-      newsletterSuccess.value = false
-    }, 3000)
+    setTimeout(() => { newsletterSuccess.value = false }, 3000)
   }
 }
 
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
+onMounted(() => window.addEventListener('scroll', handleScroll))
+onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 </script>
 
 <style scoped>
 .footer {
-  background: linear-gradient(145deg, #0a0e1a, #0d0d1f);
-  border-top: 1px solid rgba(59, 130, 246, 0.15);
-  padding: 60px 0 30px;
-  position: relative;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border-color);
+  padding: 60px 0 30px; position: relative; overflow: hidden;
 }
 
-/* Footer Content Layout */
+.footer-glow {
+  position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
+  width: 700px; height: 200px;
+  background: radial-gradient(ellipse, rgba(0,31,63,0.5) 0%, rgba(0,140,140,0.1) 50%, transparent 70%);
+  filter: blur(40px); pointer-events: none;
+}
+
 .footer-content {
-  display: grid;
-  grid-template-columns: 1.2fr 1.5fr;
-  gap: 3rem;
-  margin-bottom: 3rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-/* Brand Section */
-.footer-brand {
-  text-align: left;
-}
-
-.brand-wrapper {
-  max-width: 300px;
+  display: grid; grid-template-columns: 1.2fr 1.5fr;
+  gap: 3rem; margin-bottom: 3rem; padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .footer-logo {
-  font-size: 2rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, #ffffff, #3b82f6);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800;
+  background: linear-gradient(120deg, #fff 20%, #00BFFF 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
   margin-bottom: 0.75rem;
 }
 
-.logo-dot {
-  color: #3b82f6;
-  background: none;
-  -webkit-background-clip: unset;
-  background-clip: unset;
+[data-theme="light"] .footer-logo {
+  background: linear-gradient(120deg, #001828 20%, #008C8C 100%);
+  -webkit-background-clip: text; background-clip: text;
 }
 
-.footer-description {
-  font-size: 0.85rem;
-  color: #94a3b8;
-  line-height: 1.6;
-}
+.logo-dot { color: #00BFFF; background: none; -webkit-background-clip: unset; background-clip: unset; }
 
-/* Links Section */
-.footer-links {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
+.footer-description { font-size: 0.84rem; color: var(--text-muted); line-height: 1.65; }
+
+.footer-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
 
 .links-title {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 1rem;
-  position: relative;
-  display: inline-block;
+  font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 700;
+  color: var(--text-primary); margin-bottom: 1rem;
+  position: relative; display: inline-block;
 }
 
 .links-title::after {
-  content: '';
-  position: absolute;
-  bottom: -6px;
-  left: 0;
-  width: 30px;
-  height: 2px;
-  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  content: ''; position: absolute; bottom: -5px; left: 0;
+  width: 28px; height: 2px;
+  background: linear-gradient(90deg, #00BFFF, #008C8C);
   border-radius: 2px;
 }
 
-.links-column ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.links-column li {
-  margin-bottom: 0.6rem;
-}
+.links-column ul { list-style: none; padding: 0; margin: 0; }
+.links-column li { margin-bottom: 0.6rem; }
 
 .links-column a {
-  color: #94a3b8;
-  text-decoration: none;
-  font-size: 0.85rem;
-  transition: all 0.3s ease;
-  display: inline-block;
+  color: var(--text-muted); text-decoration: none;
+  font-size: 0.84rem; transition: all 0.3s ease; display: inline-block;
 }
 
-.links-column a:hover {
-  color: #3b82f6;
-  transform: translateX(4px);
-}
+.links-column a:hover { color: #00BFFF; transform: translateX(4px); }
 
-/* Social Links in Footer */
-.social-links li {
-  margin-bottom: 0.6rem;
-}
+.social-links li { margin-bottom: 0.6rem; }
 
 .social-link {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #94a3b8;
-  font-size: 0.85rem;
+  display: flex; align-items: center; gap: 8px;
+  color: var(--text-muted); font-size: 0.84rem;
+  text-decoration: none; transition: all 0.3s ease;
 }
 
-.social-link i {
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-}
+.social-link i { font-size: 1rem; }
+.social-link:hover { color: #00BFFF; }
 
-.social-link:hover {
-  color: #3b82f6;
-}
-
-.social-link:hover i {
-  transform: scale(1.1);
-}
-
-/* Contact Row */
+/* Contact row */
 .contact-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-  margin-bottom: 2.5rem;
-  padding: 1rem;
-  background: rgba(59, 130, 246, 0.05);
+  display: flex; justify-content: center; align-items: center;
+  gap: 2rem; flex-wrap: wrap; margin-bottom: 2.5rem;
+  padding: 1rem 1.5rem;
+  background: rgba(0,191,255,0.04);
   border-radius: 50px;
-  border: 1px solid rgba(59, 130, 246, 0.1);
+  border: 1px solid var(--border-color);
 }
 
 .contact-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #cbd5e1;
-  font-size: 0.85rem;
+  display: flex; align-items: center; gap: 8px;
+  color: var(--text-secondary); font-size: 0.84rem;
 }
 
-.contact-item i {
-  font-size: 1.1rem;
-  color: #3b82f6;
-}
+.contact-item i { font-size: 1rem; color: #00BFFF; }
+[data-theme="light"] .contact-item i { color: #008C8C; }
+.contact-item a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease; }
+.contact-item a:hover { color: #00BFFF; }
+.contact-divider { width: 1px; height: 18px; background: var(--border-color); }
 
-.contact-item a {
-  color: #cbd5e1;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.contact-item a:hover {
-  color: #3b82f6;
-}
-
-.contact-divider {
-  width: 1px;
-  height: 20px;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-/* Newsletter Section */
+/* Newsletter */
 .newsletter-section {
-  margin-bottom: 2.5rem;
-  padding: 2rem;
-  background: rgba(15, 20, 35, 0.6);
-  backdrop-filter: blur(10px);
-  border-radius: 24px;
-  border: 1px solid rgba(59, 130, 246, 0.15);
+  margin-bottom: 2.5rem; padding: 2rem;
+  background: var(--bg-elevated);
+  border-radius: 22px; border: 1px solid var(--border-color);
 }
 
-.newsletter-content {
-  text-align: center;
-  max-width: 500px;
-  margin: 0 auto;
-}
+.newsletter-content { text-align: center; max-width: 500px; margin: 0 auto; }
+.newsletter-text { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1rem; }
 
-.newsletter-text {
-  font-size: 0.9rem;
-  color: #cbd5e1;
-  margin-bottom: 1rem;
-}
-
-.newsletter-form {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-}
+.newsletter-form { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
 
 .newsletter-form input {
-  flex: 1;
-  padding: 12px 16px;
-  background: rgba(10, 14, 26, 0.8);
-  border: 1px solid rgba(59, 130, 246, 0.2);
-  border-radius: 12px;
-  color: white;
-  font-size: 0.85rem;
-  transition: all 0.3s ease;
+  flex: 1; padding: 11px 16px;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-color);
+  border-radius: 12px; color: var(--text-primary);
+  font-size: 0.84rem; transition: all 0.3s ease;
 }
 
 .newsletter-form input:focus {
-  outline: none;
-  border-color: #3b82f6;
+  outline: none; border-color: #00BFFF;
+  box-shadow: 0 0 0 3px rgba(0,191,255,0.08);
 }
 
-.newsletter-form input::placeholder {
-  color: #64748b;
-}
+.newsletter-form input::placeholder { color: var(--text-muted); }
 
 .newsletter-form button {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 12px 20px;
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
-  border: none;
-  border-radius: 12px;
-  color: white;
-  font-weight: 600;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  display: flex; align-items: center; gap: 6px;
+  padding: 11px 20px;
+  background: linear-gradient(135deg, #00BFFF, #008C8C);
+  border: none; border-radius: 12px;
+  color: #001828; font-weight: 700; font-size: 0.84rem;
+  cursor: pointer; transition: all 0.3s ease;
 }
 
 .newsletter-form button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 6px 18px rgba(0,191,255,0.3);
 }
 
 .newsletter-success {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  font-size: 0.8rem;
-  color: #4ade80;
-  margin-top: 0.75rem;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  font-size: 0.8rem; color: #4ade80; margin-top: 0.75rem;
 }
 
 /* Copyright */
 .copyright {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1rem; padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
   font-size: 0.75rem;
 }
 
-.copyright p {
-  color: #64748b;
-  margin: 0;
-}
+.copyright p { color: var(--text-muted); margin: 0; }
+.copyright-links { display: flex; gap: 0.5rem; }
+.copyright-links a { color: var(--text-muted); text-decoration: none; transition: color 0.3s ease; }
+.copyright-links a:hover { color: #00BFFF; }
+.divider { color: var(--text-muted); }
 
-.copyright-links {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.copyright-links a {
-  color: #64748b;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.copyright-links a:hover {
-  color: #3b82f6;
-}
-
-.divider {
-  color: #64748b;
-}
-
-/* Back to Top Button */
+/* Back to top */
 .back-to-top {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 48px;
-  height: 48px;
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
-  border: none;
-  border-radius: 50%;
-  color: white;
-  font-size: 1.2rem;
-  cursor: pointer;
+  position: fixed; bottom: 28px; right: 28px;
+  width: 46px; height: 46px;
+  background: linear-gradient(135deg, #001F3F, #008C8C);
+  border: 1px solid rgba(0,191,255,0.3);
+  border-radius: 12px; color: #00BFFF;
+  font-size: 1.1rem; cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0,31,63,0.4);
+  z-index: 200;
+  display: flex; align-items: center; justify-content: center;
 }
 
 .back-to-top:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 8px 30px rgba(0,191,255,0.25);
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 991px) {
-  .footer-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .footer-brand {
-    text-align: center;
-  }
-  
-  .brand-wrapper {
-    max-width: 100%;
-  }
-  
-  .footer-links {
-    text-align: center;
-  }
-  
-  .links-title::after {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  .contact-row {
-    flex-direction: column;
-    border-radius: 24px;
-    gap: 1rem;
-  }
-  
-  .contact-divider {
-    display: none;
-  }
+  .footer-content { grid-template-columns: 1fr; }
+  .footer-brand { text-align: center; }
+  .brand-wrapper { max-width: 100%; }
+  .footer-links { text-align: center; }
+  .links-title::after { left: 50%; transform: translateX(-50%); }
+  .contact-row { flex-direction: column; border-radius: 20px; }
+  .contact-divider { display: none; }
 }
 
 @media (max-width: 768px) {
-  .footer {
-    padding: 40px 0 20px;
-  }
-  
-  .footer-links {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
-  .newsletter-form {
-    flex-direction: column;
-  }
-  
-  .copyright {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .back-to-top {
-    bottom: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .contact-item {
-    font-size: 0.75rem;
-  }
-  
-  .newsletter-section {
-    padding: 1.5rem;
-  }
+  .footer { padding: 40px 0 20px; }
+  .footer-links { grid-template-columns: 1fr; gap: 1.5rem; }
+  .newsletter-form { flex-direction: column; }
+  .copyright { flex-direction: column; text-align: center; }
 }
 </style>

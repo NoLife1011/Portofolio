@@ -11,18 +11,12 @@ import 'aos/dist/aos.css'
 const app = createApp(App)
 app.mount('#app')
 
-// Konfigurasi AOS agar animasi berulang setiap scroll
 AOS.init({
-    duration: 800,
-    once: false,     // false = animasi akan berulang
-    mirror: true,    // true = animasi juga aktif saat scroll ke atas
-    offset: 50,      // jarak trigger dari viewport
-    easing: 'ease-in-out',
-    delay: 0,
-    disable: false
+  duration: 800,
+  once: false,
+  mirror: true,
+  offset: 50,
+  easing: 'ease-in-out',
 })
 
-// Refresh AOS setelah komponen terload
-window.addEventListener('load', () => {
-    AOS.refresh()
-})
+window.addEventListener('load', () => { AOS.refresh() })

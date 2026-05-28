@@ -1,63 +1,191 @@
-/* style.css - Tambahkan ini */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
 
-/* Base animation styles */
+/* ===== MIDNIGHT GLOW VARIABLES ===== */
+:root {
+  --midnight: #001F3F;
+  --teal: #008C8C;
+  --cyan: #00BFFF;
+  --cyan-soft: rgba(0, 191, 255, 0.12);
+  --teal-soft: rgba(0, 140, 140, 0.12);
+  --glow: rgba(0, 191, 255, 0.2);
+
+  /* DARK MODE (default) */
+  --bg-main: #07090d;
+  --bg-card: rgba(13, 17, 23, 0.85);
+  --bg-elevated: #111820;
+  --border-color: rgba(0, 191, 255, 0.15);
+  --border-hover: rgba(0, 191, 255, 0.4);
+  --text-primary: #e2f0fb;
+  --text-secondary: #7aacca;
+  --text-muted: #456070;
+  --section-alt: rgba(0, 31, 63, 0.15);
+}
+
+/* ===== LIGHT MODE ===== */
+[data-theme="light"] {
+  --bg-main: #eef5fc;
+  --bg-card: rgba(255, 255, 255, 0.9);
+  --bg-elevated: #ddeef9;
+  --border-color: rgba(0, 140, 140, 0.2);
+  --border-hover: rgba(0, 140, 140, 0.5);
+  --text-primary: #001828;
+  --text-secondary: #005577;
+  --text-muted: #4a7a9b;
+  --section-alt: rgba(0, 140, 140, 0.05);
+}
+
+/* ===== RESET ===== */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+body {
+  margin: 0; padding: 0;
+  background: var(--bg-main);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--text-primary);
+  overflow-x: hidden;
+  transition: background 0.45s ease, color 0.45s ease;
+}
+
+/* Font Nunito untuk semua heading */
+h1, h2, h3, h4, h5, h6,
+.section-title,
+.navbar-brand,
+.footer-logo,
+.btn-primary-hero,
+.btn-outline-hero,
+.nav-link,
+.hero-title,
+.hero-role .role-typed {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+/* ===== APP WRAPPER ===== */
+.app-wrapper {
+  background: var(--bg-main);
+  min-height: 100vh;
+  position: relative;
+  transition: background 0.45s ease;
+}
+
+.app-wrapper::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(circle at 15% 25%, rgba(0, 31, 63, 0.5) 0%, transparent 45%),
+    radial-gradient(circle at 85% 75%, rgba(0, 140, 140, 0.2) 0%, transparent 45%);
+  pointer-events: none; z-index: 0;
+}
+
+[data-theme="light"] .app-wrapper::before {
+  background:
+    radial-gradient(circle at 15% 25%, rgba(0, 31, 63, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 85% 75%, rgba(0, 140, 140, 0.08) 0%, transparent 45%);
+}
+
+/* ===== SECTIONS ===== */
+.hero-section {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  position: relative; background: transparent;
+}
+
+.section {
+  min-height: 100vh;
+  padding: 80px 0;
+  position: relative; background: transparent;
+}
+
+.section:nth-child(even) { background: var(--section-alt); }
+.contact-section { padding-bottom: 60px; }
+
+/* ===== CONTAINER ===== */
+.container {
+  width: 100%; max-width: 1280px;
+  margin: 0 auto; padding: 0 24px;
+  position: relative; z-index: 2;
+}
+
+/* ===== SCROLL ANIMATION ===== */
+.section-anim {
+  opacity: 0; transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.section-anim.show { opacity: 1; transform: translateY(0); }
+
+/* ===== GRADIENT TEXT ===== */
+.gradient-text {
+  background: linear-gradient(120deg, var(--cyan) 0%, var(--teal) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* ===== SECTION BADGE ===== */
+.section-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(0,191,255,0.1);
+  border: 1px solid rgba(0,191,255,0.28);
+  padding: 6px 16px; border-radius: 40px;
+  font-size: 0.82rem; font-weight: 600;
+  color: #00BFFF; margin-bottom: 1rem;
+  font-family: 'Nunito', sans-serif;
+  letter-spacing: 0.02em;
+}
+[data-theme="light"] .section-badge {
+  background: rgba(0,140,140,0.08);
+  border-color: rgba(0,140,140,0.25); color: #008C8C;
+}
+
+/* ===== SECTION TITLE ===== */
+.section-title {
+  font-family: 'Nunito', sans-serif !important;
+  font-size: 2.8rem; font-weight: 800;
+  margin-bottom: 1rem; color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.section-divider {
+  width: 60px; height: 3px;
+  background: linear-gradient(90deg, #00BFFF, #008C8C);
+  border-radius: 4px; margin: 0 auto;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-main); }
+::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 4px; }
+::selection { background: var(--cyan); color: #001828; }
+
+/* ===== SCROLL ANIMATE (original) ===== */
 .scroll-animate {
   opacity: 0;
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-.scroll-animate.animated {
-  opacity: 1;
-}
-
-/* Fade Up */
-.scroll-animate.fade-up {
-  transform: translateY(40px);
-}
-
-.scroll-animate.fade-up.animated {
-  transform: translateY(0);
-}
-
-/* Fade Down */
-.scroll-animate.fade-down {
-  transform: translateY(-40px);
-}
-
-.scroll-animate.fade-down.animated {
-  transform: translateY(0);
-}
-
-/* Fade Left */
-.scroll-animate.fade-left {
-  transform: translateX(40px);
-}
-
-.scroll-animate.fade-left.animated {
-  transform: translateX(0);
-}
-
-/* Fade Right */
-.scroll-animate.fade-right {
-  transform: translateX(-40px);
-}
-
-.scroll-animate.fade-right.animated {
-  transform: translateX(0);
-}
-
-/* Zoom In */
-.scroll-animate.zoom-in {
-  transform: scale(0.9);
-}
-
-.scroll-animate.zoom-in.animated {
-  transform: scale(1);
-}
-
-/* With delay classes */
+.scroll-animate.animated { opacity: 1; }
+.scroll-animate.fade-up { transform: translateY(40px); }
+.scroll-animate.fade-up.animated { transform: translateY(0); }
+.scroll-animate.fade-down { transform: translateY(-40px); }
+.scroll-animate.fade-down.animated { transform: translateY(0); }
+.scroll-animate.fade-left { transform: translateX(40px); }
+.scroll-animate.fade-left.animated { transform: translateX(0); }
+.scroll-animate.fade-right { transform: translateX(-40px); }
+.scroll-animate.fade-right.animated { transform: translateX(0); }
+.scroll-animate.zoom-in { transform: scale(0.9); }
+.scroll-animate.zoom-in.animated { transform: scale(1); }
 .delay-100 { transition-delay: 0.1s; }
 .delay-200 { transition-delay: 0.2s; }
 .delay-300 { transition-delay: 0.3s; }
 .delay-400 { transition-delay: 0.4s; }
 .delay-500 { transition-delay: 0.5s; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .section { padding: 60px 0; }
+  .container { padding: 0 20px; }
+  html { scroll-padding-top: 70px; }
+  .section-title { font-size: 2rem; }
+}
+@media (max-width: 480px) {
+  .section { padding: 50px 0; }
+  .container { padding: 0 16px; }
+  .section-title { font-size: 1.7rem; }
+}
