@@ -8,7 +8,7 @@ const toggleTheme = inject('toggleTheme')
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 50
-  const sections = document.querySelectorAll("section")
+  const sections = document.querySelectorAll("section[id]")
   const navLinks = document.querySelectorAll(".nav-link")
   let current = ""
   sections.forEach(section => {
@@ -43,7 +43,7 @@ onUnmounted(() => window.removeEventListener("scroll", handleScroll))
   <nav :class="['navbar navbar-expand-lg fixed-top custom-navbar', { scrolled: isScrolled }]">
     <div class="container">
       <a class="navbar-brand fw-bold" href="#hero" @click="scrollToHero">
-        <span class="brand-text">Farrel</span>
+        <span class="brand-text">FARREL</span>
         <span class="brand-dot"></span>
       </a>
 
@@ -111,60 +111,46 @@ onUnmounted(() => window.removeEventListener("scroll", handleScroll))
 .custom-navbar {
   padding: 1rem 0;
   background: transparent;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  border-bottom: 0 solid transparent;
+  transition: all 0.3s ease;
 }
 
 .custom-navbar.scrolled {
-  background: rgba(7, 9, 13, 0.9);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: var(--bg-main);
   padding: 0.6rem 0;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
-  border-bottom: 1px solid rgba(0, 191, 255, 0.12);
-}
-
-[data-theme="light"] .custom-navbar.scrolled {
-  background: rgba(238, 245, 252, 0.92);
-  border-bottom-color: rgba(0, 140, 140, 0.15);
+  border-bottom: var(--border-w) solid var(--ink);
 }
 
 /* Brand */
 .navbar-brand {
   position: relative;
-  font-family: 'Syne', sans-serif;
-  font-size: 1.6rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  background: linear-gradient(120deg, #ffffff 20%, #00BFFF 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  transition: all 0.3s ease;
+  font-size: 1.7rem;
+  color: var(--text-primary);
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 4px;
+  text-decoration: none;
 }
 
-[data-theme="light"] .navbar-brand {
-  background: linear-gradient(120deg, #001828 20%, #008C8C 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
+.brand-text {
+  -webkit-text-stroke: 1px var(--ink);
+  color: var(--accent);
 }
 
 .brand-dot {
   display: inline-block;
-  width: 7px;
-  height: 7px;
-  background: #00BFFF;
+  width: 9px;
+  height: 9px;
+  background: var(--accent);
+  border: 2px solid var(--ink);
   border-radius: 50%;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
   animation: blink 2.5s ease-in-out infinite;
-  box-shadow: 0 0 8px #00BFFF;
 }
 
 @keyframes blink {
   0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(1.3); }
+  50% { opacity: 0.5; transform: scale(1.3); }
 }
 
 /* Nav links */
@@ -172,75 +158,47 @@ onUnmounted(() => window.removeEventListener("scroll", handleScroll))
   position: relative;
   margin-left: 0.5rem;
   color: var(--text-secondary) !important;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.92rem;
   padding: 6px 14px !important;
   border-radius: 8px;
-  transition: all 0.25s ease;
-  opacity: 0.85;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
 }
 
 .nav-link:hover {
-  opacity: 1;
   color: var(--text-primary) !important;
-  background: var(--cyan-soft);
+  background: var(--accent-soft);
+  border-color: var(--ink);
 }
 
 .nav-link.active {
-  opacity: 1;
-  color: #00BFFF !important;
-  background: rgba(0, 191, 255, 0.1);
-}
-
-.nav-link::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: 0px;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #00BFFF, #008C8C);
-  transition: width 0.3s ease, left 0.3s ease;
-  transform: translateX(-50%);
-  border-radius: 2px;
-}
-
-.nav-link:hover::after,
-.nav-link.active::after {
-  width: 60%;
+  color: var(--text-primary) !important;
+  background: var(--accent);
+  border-color: var(--ink);
 }
 
 /* Theme Button */
 .theme-btn {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 8px;
-  border: 1px solid rgba(0, 191, 255, 0.2);
-  background: rgba(0, 191, 255, 0.08);
+  border: 2px solid var(--ink);
+  background: var(--bg-card);
   color: var(--text-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
   flex-shrink: 0;
 }
 
 .theme-btn:hover {
-  border-color: #00BFFF;
-  background: rgba(0, 191, 255, 0.15);
-  color: #00BFFF;
-}
-
-[data-theme="light"] .theme-btn {
-  border-color: rgba(0, 140, 140, 0.25);
-  background: rgba(0, 140, 140, 0.08);
-  color: var(--text-secondary);
-}
-
-[data-theme="light"] .theme-btn:hover {
-  border-color: #008C8C;
-  color: #008C8C;
+  background: var(--accent);
+  color: #fff;
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 var(--ink);
 }
 
 /* Icon swap animation */
@@ -274,7 +232,7 @@ onUnmounted(() => window.removeEventListener("scroll", handleScroll))
 .hamburger span {
   display: block;
   position: absolute;
-  height: 2px;
+  height: 3px;
   width: 100%;
   background: var(--text-primary);
   border-radius: 2px;
@@ -285,9 +243,9 @@ onUnmounted(() => window.removeEventListener("scroll", handleScroll))
 .hamburger span:nth-child(2) { top: 8px; }
 .hamburger span:nth-child(3) { top: 16px; }
 
-.hamburger.open span:nth-child(1) { top: 8px; transform: rotate(135deg); background: #00BFFF; }
+.hamburger.open span:nth-child(1) { top: 8px; transform: rotate(135deg); background: var(--accent); }
 .hamburger.open span:nth-child(2) { opacity: 0; left: -40px; }
-.hamburger.open span:nth-child(3) { top: 8px; transform: rotate(-135deg); background: #00BFFF; }
+.hamburger.open span:nth-child(3) { top: 8px; transform: rotate(-135deg); background: var(--accent); }
 
 /* Mobile menu */
 @media (max-width: 991.98px) {
@@ -295,20 +253,15 @@ onUnmounted(() => window.removeEventListener("scroll", handleScroll))
     position: absolute;
     top: 100%;
     left: 0; right: 0;
-    background: rgba(7, 9, 13, 0.97);
-    backdrop-filter: blur(20px);
+    background: var(--bg-main);
     padding: 1.5rem;
-    border-radius: 0 0 20px 20px;
-    border-top: 1px solid rgba(0, 191, 255, 0.12);
+    border: var(--border-w) solid var(--ink);
+    border-top: none;
+    border-radius: 0 0 16px 16px;
     transform: translateY(-10px);
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
-  }
-
-  [data-theme="light"] .navbar-collapse {
-    background: rgba(238, 245, 252, 0.97);
-    border-top-color: rgba(0, 140, 140, 0.15);
   }
 
   .navbar-collapse.show {
@@ -326,8 +279,6 @@ onUnmounted(() => window.removeEventListener("scroll", handleScroll))
     display: block;
   }
 
-  .nav-link::after { display: none; }
-
   /* Hide desktop theme btn on mobile - shown in nav-right-mobile */
   .d-none.d-lg-block { display: none !important; }
 }
@@ -341,10 +292,10 @@ onUnmounted(() => window.removeEventListener("scroll", handleScroll))
 .custom-navbar::after {
   content: '';
   position: absolute;
-  bottom: 0; left: 0;
-  height: 2px;
+  bottom: -3px; left: 0;
+  height: 3px;
   width: var(--scroll-width, 0%);
-  background: linear-gradient(90deg, #001F3F, #008C8C, #00BFFF);
+  background: var(--accent);
   transition: width 0.1s ease;
   pointer-events: none;
 }

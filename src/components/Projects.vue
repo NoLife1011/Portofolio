@@ -1,5 +1,5 @@
 <template>
-  <section id="projects" class="projects">
+  <div class="projects">
     <div class="container">
       <div class="section-header text-center mb-5">
         <div class="section-badge">Recent Works</div>
@@ -12,9 +12,10 @@
         <div class="col-lg-4 col-md-6"
           v-for="(project, index) in projects" :key="project.title"
           data-aos="fade-up" :data-aos-delay="index * 100">
-          <div class="project-card">
+          <div class="project-card comic-panel">
             <div class="image-wrapper">
               <img :src="project.image" class="project-img" :alt="project.title" />
+              <div class="halftone-overlay"></div>
               <div class="image-overlay">
                 <div class="overlay-buttons">
                   <a :href="project.demo" target="_blank" class="overlay-btn" title="Live Demo">
@@ -34,13 +35,13 @@
               <h5 class="project-title">{{ project.title }}</h5>
               <p class="project-description">{{ project.desc }}</p>
               <div class="project-links">
-                <a :href="project.demo" target="_blank" class="btn-live">
+                <a :href="project.demo" target="_blank" class="btn-live comic-btn">
                   Live Demo
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                   </svg>
                 </a>
-                <a :href="project.github" target="_blank" class="btn-code">
+                <a :href="project.github" target="_blank" class="btn-code comic-btn">
                   <i class="bi bi-github"></i> Code
                 </a>
               </div>
@@ -49,7 +50,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script setup>
@@ -66,60 +67,34 @@ const projects = [
 <style scoped>
 .projects { padding: 100px 0; background: transparent; }
 
-.section-badge {
-  display: inline-flex; align-items: center;
-  background: rgba(0,191,255,0.1); border: 1px solid rgba(0,191,255,0.25);
-  padding: 6px 16px; border-radius: 40px;
-  font-size: 0.82rem; font-weight: 500;
-  color: #00BFFF; margin-bottom: 1rem;
-}
-
-[data-theme="light"] .section-badge {
-  background: rgba(0,140,140,0.08); border-color: rgba(0,140,140,0.25); color: #008C8C;
-}
-
-.section-title {
-  font-family: 'Syne', sans-serif;
-  font-size: 2.8rem; font-weight: 800;
-  margin-bottom: 1rem; color: var(--text-primary);
-}
-
-.gradient-text {
-  background: linear-gradient(120deg, #00BFFF 0%, #008C8C 100%);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-}
-
-.section-divider {
-  width: 60px; height: 3px;
-  background: linear-gradient(90deg, #00BFFF, #008C8C);
-  border-radius: 4px; margin: 0 auto 1rem;
-}
-
 .section-subtitle { color: var(--text-muted); font-size: 0.95rem; max-width: 500px; margin: 0 auto; }
 
 .project-card {
-  background: var(--bg-card);
-  backdrop-filter: blur(10px);
-  border-radius: 22px; overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
-  border: 1px solid var(--border-color);
+  overflow: hidden;
   height: 100%; display: flex; flex-direction: column;
 }
 
-.project-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(0,191,255,0.45);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.3), 0 0 30px rgba(0,191,255,0.1);
+.image-wrapper { position: relative; overflow: hidden; aspect-ratio: 16/10; border-bottom: var(--border-w) solid var(--ink); }
+.project-img {
+  width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;
+  filter: grayscale(0.6) contrast(1.1);
 }
+.project-card:hover .project-img { transform: scale(1.08); filter: grayscale(0) contrast(1.1); }
 
-.image-wrapper { position: relative; overflow: hidden; aspect-ratio: 16/10; }
-.project-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-.project-card:hover .project-img { transform: scale(1.08); }
+.halftone-overlay {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(var(--accent) 1.5px, transparent 1.6px);
+  background-size: 7px 7px;
+  mix-blend-mode: multiply;
+  opacity: 0.3;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.project-card:hover .halftone-overlay { opacity: 0.1; }
 
 .image-overlay {
   position: absolute; inset: 0;
-  background: rgba(0, 15, 30, 0.8);
-  backdrop-filter: blur(4px);
+  background: rgba(10, 10, 10, 0.75);
   display: flex; align-items: center; justify-content: center;
   opacity: 0; transition: opacity 0.3s ease;
 }
@@ -130,16 +105,16 @@ const projects = [
 
 .overlay-btn {
   width: 46px; height: 46px;
-  background: rgba(0,191,255,0.15);
-  border: 1px solid rgba(0,191,255,0.4);
+  background: var(--accent);
+  border: 2px solid #fff;
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  color: #00BFFF; font-size: 1.1rem;
-  text-decoration: none; transition: all 0.3s ease;
+  color: #fff; font-size: 1.1rem;
+  text-decoration: none; transition: all 0.2s ease;
 }
 
 .overlay-btn:hover {
-  background: #00BFFF; color: #001828; transform: scale(1.1);
+  transform: scale(1.1) rotate(-6deg);
 }
 
 .project-content { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
@@ -147,20 +122,15 @@ const projects = [
 .tech-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0.9rem; }
 
 .tech-badge {
-  background: rgba(0,140,140,0.12);
-  color: #008C8C; padding: 3px 10px;
-  border-radius: 20px; font-size: 0.68rem; font-weight: 600;
-  border: 1px solid rgba(0,140,140,0.25);
+  background: var(--ink);
+  color: var(--paper); padding: 3px 10px;
+  border-radius: 20px; font-size: 0.68rem; font-weight: 700;
   letter-spacing: 0.03em;
 }
-
-[data-theme="light"] .tech-badge {
-  background: rgba(0,140,140,0.08); border-color: rgba(0,140,140,0.2);
-}
+[data-theme="light"] .tech-badge { background: var(--ink); color: var(--bg-main); }
 
 .project-title {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.15rem; font-weight: 700;
+  font-size: 1.2rem; font-weight: 900;
   color: var(--text-primary); margin-bottom: 0.7rem;
 }
 
@@ -172,33 +142,18 @@ const projects = [
 .project-links { display: flex; gap: 10px; margin-top: auto; }
 
 .btn-live {
-  display: inline-flex; align-items: center; gap: 6px;
   padding: 8px 18px;
-  background: linear-gradient(135deg, #00BFFF, #008C8C);
-  color: #001828; text-decoration: none;
-  border-radius: 40px; font-size: 0.8rem; font-weight: 700;
-  transition: all 0.3s ease;
-}
-
-.btn-live:hover {
-  transform: translateY(-2px); color: #001828;
-  box-shadow: 0 6px 16px rgba(0,191,255,0.35);
+  background: var(--accent);
+  color: #fff; text-decoration: none;
+  border-radius: 40px; font-size: 0.8rem; font-weight: 800;
 }
 
 .btn-code {
-  display: inline-flex; align-items: center; gap: 6px;
   padding: 8px 18px;
-  background: transparent;
-  color: var(--text-secondary);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
   text-decoration: none; border-radius: 40px;
-  font-size: 0.8rem; font-weight: 600;
-  border: 1px solid var(--border-color);
-  transition: all 0.3s ease;
-}
-
-.btn-code:hover {
-  border-color: rgba(0,191,255,0.4);
-  color: #00BFFF; transform: translateY(-2px);
+  font-size: 0.8rem; font-weight: 700;
 }
 
 @media (max-width: 768px) {

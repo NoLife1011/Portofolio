@@ -1,5 +1,5 @@
 <template>
-  <section class="hero d-flex align-items-center">
+  <div class="hero d-flex align-items-center">
     <div class="hero-grid"></div>
 
     <div class="container">
@@ -9,7 +9,7 @@
         <div class="col-lg-6 col-md-12 order-2 order-lg-1 ps-lg-4 ps-3">
           <div class="hero-content">
 
-            <div class="hero-badge mb-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="hero-badge comic-font mb-3" data-aos="fade-up" data-aos-delay="100">
               <span class="badge-pulse"></span>
               Available for projects
             </div>
@@ -24,105 +24,59 @@
             </div>
 
             <p class="hero-desc" data-aos="fade-up" data-aos-delay="400">
-              A 16-year-old student building modern web experiences
-              with Vue.js — focused on clean code, pixel-perfect UI,
-              and smooth interactions.
+              Seorang pelajar berusia 17 tahun yang membangun pengalaman web modern menggunakan Vue.js — berfokus pada kode yang rapi, UI yang presisi hingga ke detail terkecil (pixel-perfect), serta interaksi yang mulus.
             </p>
 
             <div class="hero-btns" data-aos="fade-up" data-aos-delay="500">
-              <a href="#projects" class="btn-primary-hero">
+              <a href="#projects" class="btn-primary-hero comic-btn">
                 View Projects
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
-              <a href="#contact" class="btn-outline-hero">Let's Talk</a>
+              <a href="#contact" class="btn-outline-hero comic-btn">Let's Talk</a>
             </div>
 
           </div>
         </div>
 
-        <!-- RIGHT - TERMINAL -->
+        <!-- RIGHT - POP-ART PHOTO -->
          <div class="col-lg-6 d-none d-lg-flex justify-content-start order-1 order-lg-2 ps-5" data-aos="zoom-in" data-aos-delay="300">
-          <div class="terminal-wrapper">
-            <div class="terminal">
+          <div class="photo-wrapper">
 
-              <!-- Title bar -->
-              <div class="term-bar">
-                <div class="term-dots">
-                  <span class="dot dot-r"></span>
-                  <span class="dot dot-y"></span>
-                  <span class="dot dot-g"></span>
-                </div>
-                <span class="term-title">~/portfolio/farrel</span>
-                <div class="term-status">
-                  <span class="live-dot"></span>
-                  <span>live</span>
-                </div>
-              </div>
+            <!-- comic caption tab -->
+            <div class="photo-caption comic-font">IT'S-A ME, FARREL!</div>
 
-              <!-- Terminal body -->
-              <div class="term-body">
+            <div class="pop-art-frame">
+              <!-- action burst behind photo -->
+              <svg class="burst-bg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="200,0 230,150 400,100 260,200 400,300 230,250 200,400 170,250 0,300 140,200 0,100 170,150"
+                  fill="var(--accent)" opacity="0.9"/>
+              </svg>
 
-                <div class="term-line" :class="{ visible: v[0] }">
-                  <span class="prompt">$</span><span class="cmd"> whoami</span>
-                </div>
-                <div class="term-line" :class="{ visible: v[1] }">
-                  <span class="out-cyan">Farrel</span>
-                  <span class="out-dim"> // Vue.js Developer, Indonesia</span>
-                </div>
+              <!-- swap this src for your own photo -->
+              <img
+                src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=700&h=800&fit=crop"
+                alt="Farrel"
+                class="hero-photo"
+              />
 
-                <div class="term-line gap" :class="{ visible: v[2] }">
-                  <span class="prompt">$</span><span class="cmd"> cat skills.json</span>
-                </div>
-                <div class="term-line" :class="{ visible: v[3] }">
-                  <span class="out-dim">{</span>
-                </div>
-                <div class="term-line ind" :class="{ visible: v[3] }">
-                  <span class="out-key">"frontend"</span><span class="out-dim">: [</span><span class="out-str">"Vue.js"</span><span class="out-dim">, </span><span class="out-str">"HTML"</span><span class="out-dim">, </span><span class="out-str">"CSS"</span><span class="out-dim">],</span>
-                </div>
-                <div class="term-line ind" :class="{ visible: v[4] }">
-                  <span class="out-key">"backend"</span><span class="out-dim">: [</span><span class="out-str">"Node.js"</span><span class="out-dim">, </span><span class="out-str">"Express"</span><span class="out-dim">],</span>
-                </div>
-                <div class="term-line ind" :class="{ visible: v[5] }">
-                  <span class="out-key">"tools"</span><span class="out-dim">: [</span><span class="out-str">"Docker"</span><span class="out-dim">, </span><span class="out-str">"MySQL"</span><span class="out-dim">, </span><span class="out-str">"Git"</span><span class="out-dim">]</span>
-                </div>
-                <div class="term-line" :class="{ visible: v[5] }">
-                  <span class="out-dim">}</span>
-                </div>
+              <!-- halftone dot overlay for pop-art texture -->
+              <div class="halftone-overlay"></div>
 
-                <div class="term-line gap" :class="{ visible: v[6] }">
-                  <span class="prompt">$</span><span class="cmd"> git log --oneline -3</span>
-                </div>
-                <div class="term-line" :class="{ visible: v[7] }">
-                  <span class="out-hash">a3f1c2e</span><span class="out-dim"> ✨ portfolio v2 redesign</span>
-                </div>
-                <div class="term-line" :class="{ visible: v[7] }">
-                  <span class="out-hash">b8d4e1f</span><span class="out-dim"> 🐳 dockerize full stack app</span>
-                </div>
-                <div class="term-line" :class="{ visible: v[7] }">
-                  <span class="out-hash">c2a9d3b</span><span class="out-dim"> 🚀 ship weather dashboard</span>
-                </div>
-
-                <div class="term-line gap" :class="{ visible: v[8] }">
-                  <span class="prompt">$</span><span class="cmd"> </span><span class="term-cursor">█</span>
-                </div>
-
-              </div>
-
-              <!-- Status bar -->
-              <div class="term-footer">
-                <span class="tf-item"><span class="tf-dot tf-green"></span> main</span>
-                <span class="tf-item">Vue 3.4</span>
-                <span class="tf-item tf-r"><span class="tf-dot tf-cyan"></span> Node v20</span>
-              </div>
-
+              <!-- thick comic border + corner rivets -->
+              <span class="rivet rivet-tl"></span>
+              <span class="rivet rivet-tr"></span>
+              <span class="rivet rivet-bl"></span>
+              <span class="rivet rivet-br"></span>
             </div>
+
+            <div class="photo-tag comic-font">WEB DEV</div>
           </div>
         </div>
 
       </div>
     </div>
 
-  </section>
+  </div>
 </template>
 
 <script setup>
@@ -144,19 +98,10 @@ const loop = () => {
   setTimeout(loop, del ? 48 : 78)
 }
 
-const v = ref(Array(9).fill(false))
-
-onMounted(() => {
-  setTimeout(loop, 400)
-  ;[300,620,1020,1320,1620,1920,2350,2650,3050].forEach((d, i) => {
-    setTimeout(() => { v.value[i] = true }, d)
-  })
-})
+onMounted(() => { setTimeout(loop, 400) })
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Fira+Code:wght@300;400;500&display=swap');
-
 .hero {
   min-height: 100vh;
   position: relative;
@@ -166,15 +111,8 @@ onMounted(() => {
 
 .hero-grid {
   position: absolute; inset: 0; pointer-events: none;
-  background-image:
-    linear-gradient(rgba(0,191,255,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,191,255,0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-[data-theme="light"] .hero-grid {
-  background-image:
-    linear-gradient(rgba(0,140,140,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,140,140,0.05) 1px, transparent 1px);
+  background-image: radial-gradient(var(--halftone-color) 1.6px, transparent 1.6px);
+  background-size: 18px 18px;
 }
 
 /* ===== LEFT ===== */
@@ -182,19 +120,17 @@ onMounted(() => {
 
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(0,191,255,0.1);
-  border: 1px solid rgba(0,191,255,0.28);
-  padding: 6px 16px; border-radius: 40px;
-  font-size: 0.82rem; font-weight: 500; color: #00BFFF;
-}
-[data-theme="light"] .hero-badge {
-  background: rgba(0,140,140,0.08);
-  border-color: rgba(0,140,140,0.25); color: #008C8C;
+  background: var(--accent);
+  border: var(--border-w) solid var(--ink);
+  padding: 7px 18px; border-radius: 40px;
+  font-size: 0.95rem; color: #fff;
+  box-shadow: var(--panel-shadow-sm);
+  transform: rotate(-2deg);
 }
 
 .badge-pulse {
-  width: 7px; height: 7px; background: #22c55e;
-  border-radius: 50%; box-shadow: 0 0 8px #22c55e;
+  width: 8px; height: 8px; background: #fff;
+  border-radius: 50%; border: 1.5px solid var(--ink);
   animation: pg 1.8s infinite;
 }
 @keyframes pg {
@@ -203,20 +139,11 @@ onMounted(() => {
 }
 
 .hero-title {
-  font-family: 'Nunito', sans-serif;
   font-size: clamp(2.8rem, 6vw, 4.8rem);
-  font-weight: 800; line-height: 1.05;
-  color: var(--text-primary); letter-spacing: -0.03em;
+  font-weight: 900; line-height: 1;
+  color: var(--text-primary);
   margin-bottom: 0.75rem;
-}
-
-.gradient-text {
-  background: linear-gradient(120deg, #00BFFF 0%, #008C8C 60%, #ffffff 100%);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-}
-[data-theme="light"] .gradient-text {
-  background: linear-gradient(120deg, #00BFFF 0%, #008C8C 100%);
-  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-stroke: 1px var(--ink);
 }
 
 .hero-role {
@@ -225,172 +152,119 @@ onMounted(() => {
 }
 
 .role-typed {
-  font-family: 'Nunito', sans-serif;
-  font-size: clamp(1rem, 2.5vw, 1.35rem);
-  font-weight: 700; color: #008C8C;
+  font-family: 'Bangers', cursive;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: var(--accent);
+  -webkit-text-stroke: 0.6px var(--ink);
 }
 
 .cursor-blink {
-  font-size: 1.3rem; color: #00BFFF;
+  font-size: 1.3rem; color: var(--ink);
   animation: bc 1s step-end infinite;
 }
 @keyframes bc { 0%,100%{opacity:1} 50%{opacity:0} }
 
 .hero-desc {
-  font-size: 0.9rem; line-height: 1.8;
+  font-size: 0.92rem; line-height: 1.8;
   color: var(--text-secondary); max-width: 430px;
   margin-bottom: 2rem;
 }
 
-.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
 
 .btn-primary-hero {
-  display: inline-flex; align-items: center; gap: 8px;
   padding: 12px 26px;
-  background: linear-gradient(135deg, #00BFFF 0%, #008C8C 100%);
-  border-radius: 12px; font-weight: 700; font-size: 0.9rem;
-  color: #001828; text-decoration: none; transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(0,191,255,0.28);
-}
-.btn-primary-hero:hover {
-  transform: translateY(-3px); color: #001828;
-  box-shadow: 0 8px 28px rgba(0,191,255,0.42);
+  background: var(--accent);
+  border-radius: 12px; font-weight: 800; font-size: 0.9rem;
+  color: #fff; text-decoration: none;
 }
 .btn-primary-hero svg { transition: transform 0.3s ease; }
 .btn-primary-hero:hover svg { transform: translateX(4px); }
 
 .btn-outline-hero {
-  display: inline-flex; align-items: center;
-  padding: 11px 24px; background: transparent;
-  border: 1.5px solid rgba(0,191,255,0.28);
-  border-radius: 12px; font-weight: 600; font-size: 0.9rem;
-  color: var(--text-primary); text-decoration: none; transition: all 0.3s ease;
-}
-.btn-outline-hero:hover {
-  border-color: #00BFFF; color: #00BFFF;
-  background: rgba(0,191,255,0.08); transform: translateY(-3px);
+  padding: 11px 24px; background: var(--bg-card);
+  border-radius: 12px; font-weight: 700; font-size: 0.9rem;
+  color: var(--text-primary); text-decoration: none;
 }
 
-/* ===== TERMINAL WRAPPER ===== */
-.terminal-wrapper {
+/* ===== POP-ART PHOTO ===== */
+.photo-wrapper {
   position: relative;
-  max-width: 480px;
+  max-width: 420px;
   width: 100%;
   margin-left: 0;
   margin-right: auto;
+  padding-top: 20px;
 }
-/* ===== TERMINAL ===== */
-.terminal {
-  background: linear-gradient(150deg, #001a33 0%, #071420 50%, #091622 100%);
-  border: 1px solid rgba(0,191,255,0.2);
-  border-radius: 18px; overflow: hidden;
-  box-shadow:
-    0 0 50px rgba(0,31,63,0.55),
-    0 0 25px rgba(0,140,140,0.12),
-    inset 0 1px 0 rgba(0,191,255,0.1);
+
+.photo-caption {
+  position: absolute; top: -6px; left: -10px; z-index: 5;
+  background: var(--bg-card);
+  border: var(--border-w) solid var(--ink);
+  padding: 6px 16px; border-radius: 14px;
+  font-size: 1.1rem; color: var(--text-primary);
+  box-shadow: var(--panel-shadow-sm);
+  transform: rotate(-3deg);
+}
+
+.photo-tag {
+  position: absolute; bottom: -14px; right: -6px; z-index: 5;
+  background: var(--ink);
+  color: var(--paper);
+  border: var(--border-w) solid var(--accent);
+  padding: 6px 14px; border-radius: 10px;
+  font-size: 0.95rem;
+  transform: rotate(2deg);
+  box-shadow: var(--panel-shadow-sm);
+}
+
+.pop-art-frame {
+  position: relative;
+  border: 5px solid var(--ink);
+  border-radius: 14px;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  box-shadow: 10px 10px 0 var(--accent), 10px 10px 0 4px var(--ink);
   animation: tf 7s ease-in-out infinite;
 }
 @keyframes tf {
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-8px)}
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  50%{transform:translateY(-8px) rotate(-0.6deg)}
 }
 
-/* Bar */
-.term-bar {
-  display: flex; align-items: center; gap: 10px;
-  padding: 11px 16px;
-  background: rgba(0,10,22,0.6);
-  border-bottom: 1px solid rgba(0,191,255,0.09);
-}
-.term-dots { display: flex; gap: 6px; }
-.dot { width: 11px; height: 11px; border-radius: 50%; }
-.dot-r{background:#ff5f57} .dot-y{background:#febc2e} .dot-g{background:#28c840}
-
-.term-title {
-  flex: 1; text-align: center;
-  font-family: 'Fira Code', monospace;
-  font-size: 0.7rem; color: rgba(0,191,255,0.45);
-  letter-spacing: 0.04em;
+.burst-bg {
+  position: absolute; inset: -10%; width: 120%; height: 120%;
+  z-index: 1;
 }
 
-.term-status {
-  display: flex; align-items: center; gap: 5px;
-  font-family: 'Fira Code', monospace;
-  font-size: 0.68rem; color: #22c55e;
+.hero-photo {
+  position: relative; z-index: 2;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.35) brightness(1.05);
 }
-.live-dot {
-  width: 6px; height: 6px; background: #22c55e;
-  border-radius: 50%; box-shadow: 0 0 5px #22c55e;
-  animation: pg 2s infinite;
-}
+[data-theme="light"] .hero-photo { filter: grayscale(1) contrast(1.25) brightness(1.1); }
 
-/* Body */
-.term-body {
-  padding: 16px 18px 12px;
-  font-family: 'Fira Code', monospace;
-  font-size: 0.78rem;
-  line-height: 1.65;
+/* Ben-Day dot halftone overlay tinted with accent */
+.halftone-overlay {
+  position: absolute; inset: 0; z-index: 3;
+  background-image: radial-gradient(var(--accent) 1.5px, transparent 1.6px);
+  background-size: 6px 6px;
+  mix-blend-mode: multiply;
+  opacity: 0.55;
+  pointer-events: none;
 }
+[data-theme="light"] .halftone-overlay { opacity: 0.4; }
 
-.term-line {
-  display: flex; flex-wrap: wrap; align-items: baseline;
-  opacity: 0; transform: translateY(5px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+.rivet {
+  position: absolute; width: 10px; height: 10px;
+  background: var(--ink); border-radius: 50%; z-index: 4;
+  border: 2px solid var(--accent);
 }
-.term-line.visible { opacity: 1; transform: translateY(0); }
-.gap { margin-top: 10px; }
-.ind { padding-left: 14px; }
-
-/* Syntax */
-.prompt { color: #008C8C; font-weight: 500; }
-.cmd { color: #cde8f8; }
-.out-cyan { color: #00BFFF; font-weight: 500; }
-.out-dim { color: rgba(100,160,200,0.65); }
-.out-key { color: #79b8d4; }
-.out-str { color: #4ec9b0; }
-.out-hash { color: rgba(0,191,255,0.55); }
-
-.term-cursor {
-  color: #00BFFF;
-  animation: bc 1s step-end infinite;
-  font-size: 0.72rem;
-}
-
-/* Footer */
-.term-footer {
-  display: flex; align-items: center; gap: 14px;
-  padding: 7px 18px;
-  background: rgba(0,8,18,0.55);
-  border-top: 1px solid rgba(0,191,255,0.07);
-  font-family: 'Fira Code', monospace;
-  font-size: 0.65rem;
-}
-.tf-item { display: flex; align-items: center; gap: 5px; color: rgba(100,160,200,0.55); }
-.tf-r { margin-left: auto; }
-.tf-dot { width: 5px; height: 5px; border-radius: 50%; }
-.tf-green { background: #22c55e; }
-.tf-cyan { background: #00BFFF; box-shadow: 0 0 4px #00BFFF; }
-
-/* ===== SCROLL HINT ===== */
-.scroll-hint {
-  position: absolute; bottom: 2rem; left: 50%;
-  transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 6px; z-index: 2;
-}
-.scroll-line {
-  width: 1px; height: 36px;
-  background: linear-gradient(to bottom, #00BFFF, transparent);
-  animation: sd 2s ease-in-out infinite;
-}
-@keyframes sd {
-  0%{transform:scaleY(0);transform-origin:top;opacity:1}
-  50%{transform:scaleY(1);transform-origin:top;opacity:1}
-  100%{transform:scaleY(1);transform-origin:bottom;opacity:0}
-}
-.scroll-hint span {
-  font-size: 0.6rem; letter-spacing: 0.18em;
-  text-transform: uppercase; color: var(--text-muted);
-}
+.rivet-tl { top: 8px; left: 8px; }
+.rivet-tr { top: 8px; right: 8px; }
+.rivet-bl { bottom: 8px; left: 8px; }
+.rivet-br { bottom: 8px; right: 8px; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 991px) {
@@ -398,12 +272,9 @@ onMounted(() => {
   .hero-content { text-align: center; }
   .hero-desc { max-width: 100%; }
   .hero-btns { justify-content: center; }
-  .terminal-wrapper { max-width: 400px; margin-bottom: 2rem; }
-  .scroll-hint { display: none; }
 }
 @media (max-width: 480px) {
   .hero-btns { flex-direction: column; align-items: stretch; }
-  .btn-primary-hero, .btn-outline-hero { justify-content: center; }
-  .term-body { font-size: 0.7rem; padding: 12px 12px 10px; }
+  .btn-primary-hero, .btn-outline-hero { justify-content: center; text-align: center; }
 }
 </style>

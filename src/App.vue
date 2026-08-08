@@ -37,24 +37,10 @@ onMounted(() => {
   }, { threshold: 0.15 })
   sections.forEach(sec => observer.observe(sec))
 
-  // Active nav link
-  const updateActiveLink = () => {
-    const navLinks = document.querySelectorAll(".nav-link")
-    const sectionEls = document.querySelectorAll("section[id]")
-    let current = ""
-    sectionEls.forEach(section => {
-      const top = section.offsetTop - 100
-      if (window.scrollY >= top && window.scrollY < top + section.offsetHeight) {
-        current = section.getAttribute("id")
-      }
-    })
-    navLinks.forEach(link => {
-      link.classList.remove("active")
-      if (link.getAttribute("href") === `#${current}`) link.classList.add("active")
-    })
-  }
-  window.addEventListener("scroll", updateActiveLink)
-  updateActiveLink()
+  // NOTE: active nav-link logic lives only in Navbar.vue now.
+  // Having it here too caused two systems to fight over the
+  // .active class, which is why the highlighted nav item didn't
+  // match the section actually on screen.
 })
 </script>
 
