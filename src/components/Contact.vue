@@ -12,19 +12,19 @@
         <!-- LEFT -->
         <div class="col-lg-5">
           <div class="contact-info">
-            <div class="info-card comic-panel" v-for="item in contacts" :key="item.label">
+            <div class="info-card glass-panel" v-for="item in contacts" :key="item.label">
               <div class="info-icon-wrapper">
                 <div class="info-icon" v-html="item.icon"></div>
               </div>
               <div class="info-content">
-                <h4>{{ item.label }}</h4>
+                <h4 class="tech-font">{{ item.label }}</h4>
                 <p>{{ item.value }}</p>
               </div>
             </div>
           </div>
 
-          <div class="social-section comic-panel">
-            <h4 class="social-title comic-font">Connect with me</h4>
+          <div class="social-section glass-panel">
+            <h4 class="social-title">Connect with me</h4>
             <div class="social-links">
               <a href="https://github.com/NoLife1011" target="_blank" class="social-link">
                 <i class="bi bi-github"></i><span>GitHub</span>
@@ -44,35 +44,35 @@
 
         <!-- RIGHT - FORM -->
         <div class="col-lg-7">
-          <div class="form-wrapper comic-panel">
+          <div class="form-wrapper glass-panel">
             <form @submit.prevent="submitForm" class="contact-form">
               <div class="row g-3">
                 <div class="col-md-6">
                   <div class="field">
-                    <label>Your Name</label>
+                    <label class="tech-font">Your Name</label>
                     <input type="text" v-model="formData.name" placeholder="John Doe" required />
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="field">
-                    <label>Email Address</label>
+                    <label class="tech-font">Email Address</label>
                     <input type="email" v-model="formData.email" placeholder="john@example.com" required />
                   </div>
                 </div>
                 <div class="col-12">
                   <div class="field">
-                    <label>Subject</label>
+                    <label class="tech-font">Subject</label>
                     <input type="text" v-model="formData.subject" placeholder="Project Collaboration" />
                   </div>
                 </div>
                 <div class="col-12">
                   <div class="field">
-                    <label>Message</label>
+                    <label class="tech-font">Message</label>
                     <textarea v-model="formData.message" rows="5" placeholder="Tell me about your project..." required></textarea>
                   </div>
                 </div>
                 <div class="col-12">
-                  <button type="submit" class="btn-submit comic-btn" :disabled="isSubmitting">
+                  <button type="submit" class="btn-submit glow-btn" :disabled="isSubmitting">
                     <span v-if="!isSubmitting">
                       Send Message
                       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -137,20 +137,20 @@ const submitForm = async () => {
 
 .info-icon-wrapper {
   width: 54px; height: 54px;
-  background: var(--accent);
-  border: 2px solid var(--ink);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
   border-radius: 12px;
   display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
 
-.info-icon { color: #fff; }
+.info-icon { color: var(--accent); }
 
-.info-content h4 { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); margin-bottom: 3px; text-transform: uppercase; }
-.info-content p { font-size: 0.95rem; font-weight: 800; color: var(--text-primary); margin: 0; }
+.info-content h4 { font-size: 0.75rem; font-weight: 500; color: var(--text-muted); margin-bottom: 3px; text-transform: uppercase; }
+.info-content p { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin: 0; }
 
 .social-section { padding: 1.4rem; }
 
-.social-title { font-size: 1.1rem; color: var(--text-primary); margin-bottom: 1rem; }
+.social-title { font-size: 1.05rem; color: var(--text-primary); margin-bottom: 1rem; }
 
 .social-links { display: flex; flex-wrap: wrap; gap: 8px; }
 
@@ -158,8 +158,8 @@ const submitForm = async () => {
   display: flex; align-items: center; gap: 7px;
   padding: 8px 16px; border-radius: 40px;
   color: var(--text-primary); text-decoration: none;
-  font-size: 0.85rem; font-weight: 700;
-  border: 2px solid var(--ink);
+  font-size: 0.85rem; font-weight: 600;
+  border: 1px solid var(--line);
   background: var(--bg-elevated);
   transition: all 0.2s ease;
 }
@@ -167,10 +167,9 @@ const submitForm = async () => {
 .social-link i { font-size: 1.1rem; }
 
 .social-link:hover {
-  background: var(--accent);
-  color: #fff;
-  transform: translate(-1px, -1px);
-  box-shadow: 3px 3px 0 var(--ink);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: var(--glow-shadow);
 }
 
 /* FORM */
@@ -179,16 +178,16 @@ const submitForm = async () => {
 .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 0.25rem; }
 
 .field label {
-  font-size: 0.78rem; font-weight: 800;
-  color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em;
+  font-size: 0.75rem; font-weight: 600;
+  color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em;
 }
 
 .field input,
 .field textarea {
   width: 100%; padding: 12px 16px;
   background: var(--bg-elevated);
-  border: 2px solid var(--ink);
-  border-radius: 10px; color: var(--text-primary);
+  border: 1px solid var(--line);
+  border-radius: 8px; color: var(--text-primary);
   font-size: 0.92rem; transition: all 0.2s ease;
   resize: vertical; font-family: inherit;
 }
@@ -197,7 +196,7 @@ const submitForm = async () => {
 .field textarea:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 3px 3px 0 var(--ink);
+  box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
 .field input::placeholder,
@@ -206,9 +205,10 @@ const submitForm = async () => {
 .btn-submit {
   width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;
   padding: 14px;
-  background: var(--accent);
-  border-radius: 12px;
-  color: #fff; font-weight: 800; font-size: 1rem;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-color: transparent;
+  border-radius: 10px;
+  color: var(--ink); font-weight: 700; font-size: 1rem;
   cursor: pointer; margin-top: 0.5rem;
 }
 
@@ -218,8 +218,8 @@ const submitForm = async () => {
 
 .spinner {
   width: 17px; height: 17px;
-  border: 2px solid rgba(255,255,255,0.4);
-  border-top-color: #fff;
+  border: 2px solid rgba(10, 14, 24, 0.3);
+  border-top-color: var(--ink);
   border-radius: 50%;
   animation: spin 0.6s linear infinite;
 }
@@ -229,9 +229,9 @@ const submitForm = async () => {
 .success-message {
   display: flex; align-items: center; gap: 10px;
   padding: 12px 16px;
-  background: var(--bg-elevated);
-  border: 2px solid var(--ink);
-  border-radius: 12px; color: var(--text-primary); font-size: 0.88rem; font-weight: 700;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: 10px; color: var(--text-primary); font-size: 0.88rem; font-weight: 600;
 }
 
 @media (max-width: 768px) {

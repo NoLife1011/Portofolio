@@ -55,12 +55,12 @@
       </div>
 
       <!-- Newsletter -->
-      <div class="newsletter-section comic-panel">
+      <div class="newsletter-section glass-panel">
         <div class="newsletter-content">
-          <p class="newsletter-text comic-font">Get notified about my latest projects!</p>
+          <p class="newsletter-text tech-font">Get notified about my latest projects!</p>
           <form @submit.prevent="subscribeNewsletter" class="newsletter-form">
             <input type="email" v-model="newsletterEmail" placeholder="Your email address" required />
-            <button type="submit" class="comic-btn">
+            <button type="submit" class="glow-btn">
               Subscribe
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -115,30 +115,30 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 <style scoped>
 .footer {
   background: var(--bg-card);
-  border-top: var(--border-w) solid var(--ink);
+  border-top: 1px solid var(--line);
   padding: 60px 0 30px; position: relative; overflow: hidden;
 }
 
 .footer-content {
   display: grid; grid-template-columns: 1.2fr 1.5fr;
   gap: 3rem; margin-bottom: 3rem; padding-bottom: 2rem;
-  border-bottom: 2px dashed var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 .footer-logo {
-  font-size: 2.1rem;
+  font-size: 1.9rem;
   color: var(--text-primary);
   margin-bottom: 0.75rem;
 }
 
-.logo-dot { color: var(--accent); }
+.logo-dot { color: var(--accent); text-shadow: 0 0 10px var(--accent-glow); }
 
 .footer-description { font-size: 0.84rem; color: var(--text-muted); line-height: 1.65; }
 
 .footer-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
 
 .links-title {
-  font-size: 0.9rem; font-weight: 900;
+  font-size: 0.85rem; font-weight: 700;
   color: var(--text-primary); margin-bottom: 1rem;
   position: relative; display: inline-block;
   text-transform: uppercase;
@@ -146,8 +146,9 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
 .links-title::after {
   content: ''; position: absolute; bottom: -5px; left: 0;
-  width: 30px; height: 3px;
+  width: 26px; height: 2px;
   background: var(--accent);
+  box-shadow: 0 0 6px var(--accent-glow);
 }
 
 .links-column ul { list-style: none; padding: 0; margin: 0; }
@@ -178,7 +179,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
   padding: 1rem 1.5rem;
   background: var(--bg-elevated);
   border-radius: 50px;
-  border: 2px solid var(--ink);
+  border: 1px solid var(--line);
 }
 
 .contact-item {
@@ -197,43 +198,44 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 }
 
 .newsletter-content { text-align: center; max-width: 500px; margin: 0 auto; }
-.newsletter-text { font-size: 1.2rem; color: var(--text-primary); margin-bottom: 1rem; }
+.newsletter-text { font-size: 1.05rem; color: var(--text-primary); margin-bottom: 1rem; }
 
 .newsletter-form { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
 
 .newsletter-form input {
   flex: 1; padding: 11px 16px;
   background: var(--bg-card);
-  border: 2px solid var(--ink);
-  border-radius: 10px; color: var(--text-primary);
+  border: 1px solid var(--line);
+  border-radius: 8px; color: var(--text-primary);
   font-size: 0.84rem; transition: all 0.2s ease;
 }
 
 .newsletter-form input:focus {
   outline: none; border-color: var(--accent);
-  box-shadow: 3px 3px 0 var(--ink);
+  box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
 .newsletter-form input::placeholder { color: var(--text-muted); }
 
 .newsletter-form button {
   padding: 11px 20px;
-  background: var(--accent);
-  border-radius: 10px;
-  color: #fff; font-weight: 800; font-size: 0.84rem;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-color: transparent;
+  border-radius: 8px;
+  color: var(--ink); font-weight: 700; font-size: 0.84rem;
   cursor: pointer;
 }
 
 .newsletter-success {
   display: flex; align-items: center; justify-content: center; gap: 6px;
-  font-size: 0.8rem; color: var(--text-primary); font-weight: 700; margin-top: 0.75rem;
+  font-size: 0.8rem; color: var(--text-primary); font-weight: 600; margin-top: 0.75rem;
 }
 
 /* Copyright */
 .copyright {
   display: flex; justify-content: space-between; align-items: center;
   flex-wrap: wrap; gap: 1rem; padding-top: 1.5rem;
-  border-top: 2px dashed var(--line);
+  border-top: 1px solid var(--line);
   font-size: 0.75rem;
 }
 
@@ -247,19 +249,19 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 .back-to-top {
   position: fixed; bottom: 28px; right: 28px;
   width: 48px; height: 48px;
-  background: var(--accent);
-  border: var(--border-w) solid var(--ink);
-  border-radius: 12px; color: #fff;
+  background: var(--bg-card);
+  border: 1px solid var(--accent);
+  border-radius: 10px; color: var(--accent);
   font-size: 1.2rem; cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.2s ease;
   box-shadow: var(--panel-shadow-sm);
   z-index: 200;
   display: flex; align-items: center; justify-content: center;
 }
 
 .back-to-top:hover {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0 var(--ink);
+  box-shadow: var(--glow-shadow);
+  transform: translateY(-2px);
 }
 
 /* Responsive */

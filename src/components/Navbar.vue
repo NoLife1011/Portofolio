@@ -116,35 +116,37 @@ onUnmounted(() => window.removeEventListener("scroll", handleScroll))
 }
 
 .custom-navbar.scrolled {
-  background: var(--bg-main);
+  background: var(--bg-card-alpha);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   padding: 0.6rem 0;
-  border-bottom: var(--border-w) solid var(--ink);
+  border-bottom: 1px solid var(--line);
 }
 
 /* Brand */
 .navbar-brand {
   position: relative;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   color: var(--text-primary);
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   text-decoration: none;
 }
 
 .brand-text {
-  -webkit-text-stroke: 1px var(--ink);
   color: var(--accent);
+  text-shadow: 0 0 14px var(--accent-glow);
 }
 
 .brand-dot {
   display: inline-block;
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   background: var(--accent);
-  border: 2px solid var(--ink);
   border-radius: 50%;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 0 8px var(--accent), 0 0 16px var(--accent-glow);
   animation: blink 2.5s ease-in-out infinite;
 }
 
@@ -158,24 +160,26 @@ onUnmounted(() => window.removeEventListener("scroll", handleScroll))
   position: relative;
   margin-left: 0.5rem;
   color: var(--text-secondary) !important;
-  font-weight: 700;
-  font-size: 0.92rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  font-size: 0.85rem;
   padding: 6px 14px !important;
-  border-radius: 8px;
-  border: 2px solid transparent;
+  border-radius: 6px;
+  border: 1px solid transparent;
   transition: all 0.2s ease;
 }
 
 .nav-link:hover {
-  color: var(--text-primary) !important;
+  color: var(--accent) !important;
   background: var(--accent-soft);
-  border-color: var(--ink);
+  border-color: var(--line);
 }
 
 .nav-link.active {
-  color: var(--text-primary) !important;
-  background: var(--accent);
-  border-color: var(--ink);
+  color: var(--accent) !important;
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow) inset;
 }
 
 /* Theme Button */
@@ -183,7 +187,7 @@ onUnmounted(() => window.removeEventListener("scroll", handleScroll))
   width: 38px;
   height: 38px;
   border-radius: 8px;
-  border: 2px solid var(--ink);
+  border: 1px solid var(--line);
   background: var(--bg-card);
   color: var(--text-secondary);
   display: flex;
@@ -195,10 +199,9 @@ onUnmounted(() => window.removeEventListener("scroll", handleScroll))
 }
 
 .theme-btn:hover {
-  background: var(--accent);
-  color: #fff;
-  transform: translate(-1px, -1px);
-  box-shadow: 3px 3px 0 var(--ink);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: var(--glow-shadow);
 }
 
 /* Icon swap animation */
@@ -232,7 +235,7 @@ onUnmounted(() => window.removeEventListener("scroll", handleScroll))
 .hamburger span {
   display: block;
   position: absolute;
-  height: 3px;
+  height: 2px;
   width: 100%;
   background: var(--text-primary);
   border-radius: 2px;
@@ -253,9 +256,10 @@ onUnmounted(() => window.removeEventListener("scroll", handleScroll))
     position: absolute;
     top: 100%;
     left: 0; right: 0;
-    background: var(--bg-main);
+    background: var(--bg-card-alpha);
+    backdrop-filter: blur(14px);
     padding: 1.5rem;
-    border: var(--border-w) solid var(--ink);
+    border: 1px solid var(--line);
     border-top: none;
     border-radius: 0 0 16px 16px;
     transform: translateY(-10px);
@@ -274,8 +278,8 @@ onUnmounted(() => window.removeEventListener("scroll", handleScroll))
     margin-left: 0 !important;
     padding: 12px 16px !important;
     text-align: center;
-    border-radius: 10px;
-    font-size: 1rem !important;
+    border-radius: 8px;
+    font-size: 0.9rem !important;
     display: block;
   }
 
@@ -292,10 +296,11 @@ onUnmounted(() => window.removeEventListener("scroll", handleScroll))
 .custom-navbar::after {
   content: '';
   position: absolute;
-  bottom: -3px; left: 0;
-  height: 3px;
+  bottom: -1px; left: 0;
+  height: 2px;
   width: var(--scroll-width, 0%);
-  background: var(--accent);
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  box-shadow: 0 0 8px var(--accent-glow);
   transition: width 0.1s ease;
   pointer-events: none;
 }

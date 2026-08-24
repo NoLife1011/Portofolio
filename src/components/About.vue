@@ -9,10 +9,11 @@
 
       <div class="row justify-content-center">
         <div class="col-lg-10">
-          <div class="about-card comic-panel">
+          <div class="about-card glass-panel">
             <div class="row g-4">
               <div class="col-md-12">
-                <div class="about-intro speech-bubble">
+                <div class="about-intro terminal-box">
+                  <span class="terminal-label">&gt;_ whoami</span>
                   <p class="intro-text">
                     Hello! I'm <span class="highlight">Farrel</span>, a passionate student
                     who loves turning ideas into beautiful, functional websites.
@@ -21,7 +22,7 @@
               </div>
 
               <div class="col-md-4" v-for="card in cards" :key="card.title" data-aos="fade-up">
-                <div class="info-card comic-panel comic-halftone">
+                <div class="info-card glass-panel hud-corners">
                   <div class="card-icon" v-html="card.icon"></div>
                   <h4>{{ card.title }}</h4>
                   <p>{{ card.desc }}</p>
@@ -30,17 +31,17 @@
             </div>
 
             <div class="monologue-row mt-5">
-              <!-- Manga-style caption/narration box for a personal quote -->
+              <!-- Terminal-style log readout for a personal quote -->
               <div class="caption-box">
-                <span class="caption-label comic-font">MONOLOGUE</span>
+                <span class="caption-label tech-font">&gt;_ log_entry</span>
                 <p class="caption-text">
                   "{{ quote }}"
                 </p>
               </div>
 
-              <!-- Fun facts as comic stamp chips instead of a data table -->
+              <!-- Fun facts as HUD tag chips instead of a data table -->
               <div class="stamp-row">
-                <span class="stamp" v-for="fact in facts" :key="fact">{{ fact }}</span>
+                <span class="stamp tech-font" v-for="fact in facts" :key="fact">{{ fact }}</span>
               </div>
             </div>
           </div>
@@ -93,11 +94,11 @@ const facts = [
 }
 
 .intro-text {
-  font-size: 1.15rem; line-height: 1.75;
+  font-size: 1.1rem; line-height: 1.75;
   color: var(--text-secondary); margin-bottom: 0;
 }
 
-.highlight { color: var(--accent); font-weight: 800; }
+.highlight { color: var(--accent); font-weight: 700; }
 
 .info-card {
   padding: 1.6rem; height: 100%;
@@ -105,15 +106,15 @@ const facts = [
 
 .card-icon {
   width: 54px; height: 54px;
-  background: var(--accent);
-  border: var(--border-w) solid var(--ink);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
   border-radius: 12px;
   display: flex; align-items: center; justify-content: center;
-  margin-bottom: 1.2rem; color: #fff;
+  margin-bottom: 1.2rem; color: var(--accent);
 }
 
 .info-card h4 {
-  font-size: 1.1rem; font-weight: 900;
+  font-size: 1.05rem; font-weight: 800;
   margin-bottom: 0.8rem; color: var(--text-primary);
 }
 
@@ -129,13 +130,13 @@ const facts = [
   align-items: stretch;
 }
 
-/* Manga narration/caption box - rectangular, no tail, sits like a
-   monologue panel you'd see boxed in the corner of a comic frame */
+/* Terminal-style log/caption box */
 .caption-box {
   position: relative;
   background: var(--ink);
-  border: var(--border-w) solid var(--accent);
-  border-radius: 4px;
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--accent);
+  border-radius: 8px;
   padding: 1.6rem 1.6rem 1.4rem;
   box-shadow: var(--panel-shadow);
   display: flex;
@@ -145,19 +146,18 @@ const facts = [
 
 .caption-label {
   display: inline-block;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--accent);
-  background: var(--paper);
-  padding: 2px 10px;
-  border-radius: 4px;
+  padding: 2px 0;
   margin-bottom: 0.9rem;
   align-self: flex-start;
   letter-spacing: 0.05em;
+  opacity: 0.9;
 }
 
 .caption-text {
-  font-size: 1.1rem; line-height: 1.7;
-  color: var(--paper);
+  font-size: 1.05rem; line-height: 1.7;
+  color: var(--text-primary);
   font-style: italic;
   margin-bottom: 0;
 }
@@ -171,15 +171,18 @@ const facts = [
 .stamp {
   display: inline-flex; align-items: center;
   background: var(--bg-elevated);
-  border: 2px solid var(--ink);
-  border-radius: 40px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
   padding: 9px 16px;
-  font-size: 0.85rem; font-weight: 800;
+  font-size: 0.82rem; font-weight: 500;
   color: var(--text-primary);
-  transform: rotate(-1deg);
-  box-shadow: 3px 3px 0 var(--ink);
+  transition: all 0.2s ease;
 }
-.stamp:nth-child(even) { transform: rotate(1deg); }
+.stamp:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: var(--panel-shadow-sm);
+}
 
 @media (max-width: 768px) {
   .monologue-row { grid-template-columns: 1fr; }

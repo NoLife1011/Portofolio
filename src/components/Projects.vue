@@ -12,10 +12,10 @@
         <div class="col-lg-4 col-md-6"
           v-for="(project, index) in projects" :key="project.title"
           data-aos="fade-up" :data-aos-delay="index * 100">
-          <div class="project-card comic-panel">
+          <div class="project-card glass-panel">
             <div class="image-wrapper">
               <img :src="project.image" class="project-img" :alt="project.title" />
-              <div class="halftone-overlay"></div>
+              <div class="scanline-overlay"></div>
               <div class="image-overlay">
                 <div class="overlay-buttons">
                   <a :href="project.demo" target="_blank" class="overlay-btn" title="Live Demo">
@@ -30,18 +30,18 @@
 
             <div class="project-content">
               <div class="tech-stack">
-                <span class="tech-badge" v-for="tech in project.tech" :key="tech">{{ tech }}</span>
+                <span class="tech-badge tech-font" v-for="tech in project.tech" :key="tech">{{ tech }}</span>
               </div>
               <h5 class="project-title">{{ project.title }}</h5>
               <p class="project-description">{{ project.desc }}</p>
               <div class="project-links">
-                <a :href="project.demo" target="_blank" class="btn-live comic-btn">
+                <a :href="project.demo" target="_blank" class="btn-live glow-btn">
                   Live Demo
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                   </svg>
                 </a>
-                <a :href="project.github" target="_blank" class="btn-code comic-btn">
+                <a :href="project.github" target="_blank" class="btn-code glow-btn">
                   <i class="bi bi-github"></i> Code
                 </a>
               </div>
@@ -74,27 +74,29 @@ const projects = [
   height: 100%; display: flex; flex-direction: column;
 }
 
-.image-wrapper { position: relative; overflow: hidden; aspect-ratio: 16/10; border-bottom: var(--border-w) solid var(--ink); }
+.image-wrapper { position: relative; overflow: hidden; aspect-ratio: 16/10; border-bottom: 1px solid var(--line); }
 .project-img {
   width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;
-  filter: grayscale(0.6) contrast(1.1);
+  filter: grayscale(0.5) contrast(1.1) saturate(0.9);
 }
-.project-card:hover .project-img { transform: scale(1.08); filter: grayscale(0) contrast(1.1); }
+.project-card:hover .project-img { transform: scale(1.08); filter: grayscale(0.1) contrast(1.1); }
 
-.halftone-overlay {
+.scanline-overlay {
   position: absolute; inset: 0;
-  background-image: radial-gradient(var(--accent) 1.5px, transparent 1.6px);
-  background-size: 7px 7px;
-  mix-blend-mode: multiply;
-  opacity: 0.3;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 229, 255, 0.05) 0px,
+    rgba(0, 229, 255, 0.05) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: screen;
   pointer-events: none;
-  transition: opacity 0.3s ease;
 }
-.project-card:hover .halftone-overlay { opacity: 0.1; }
 
 .image-overlay {
   position: absolute; inset: 0;
-  background: rgba(10, 10, 10, 0.75);
+  background: rgba(6, 10, 20, 0.82);
   display: flex; align-items: center; justify-content: center;
   opacity: 0; transition: opacity 0.3s ease;
 }
@@ -105,16 +107,17 @@ const projects = [
 
 .overlay-btn {
   width: 46px; height: 46px;
-  background: var(--accent);
-  border: 2px solid #fff;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  color: #fff; font-size: 1.1rem;
+  color: var(--accent); font-size: 1.1rem;
   text-decoration: none; transition: all 0.2s ease;
 }
 
 .overlay-btn:hover {
-  transform: scale(1.1) rotate(-6deg);
+  transform: scale(1.1);
+  box-shadow: var(--glow-shadow);
 }
 
 .project-content { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
@@ -122,15 +125,15 @@ const projects = [
 .tech-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0.9rem; }
 
 .tech-badge {
-  background: var(--ink);
-  color: var(--paper); padding: 3px 10px;
-  border-radius: 20px; font-size: 0.68rem; font-weight: 700;
-  letter-spacing: 0.03em;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  color: var(--accent); padding: 3px 10px;
+  border-radius: 6px; font-size: 0.68rem; font-weight: 500;
+  letter-spacing: 0.02em;
 }
-[data-theme="light"] .tech-badge { background: var(--ink); color: var(--bg-main); }
 
 .project-title {
-  font-size: 1.2rem; font-weight: 900;
+  font-size: 1.15rem; font-weight: 800;
   color: var(--text-primary); margin-bottom: 0.7rem;
 }
 
@@ -143,17 +146,18 @@ const projects = [
 
 .btn-live {
   padding: 8px 18px;
-  background: var(--accent);
-  color: #fff; text-decoration: none;
-  border-radius: 40px; font-size: 0.8rem; font-weight: 800;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-color: transparent;
+  color: var(--ink); text-decoration: none;
+  border-radius: 40px; font-size: 0.8rem; font-weight: 700;
 }
 
 .btn-code {
   padding: 8px 18px;
-  background: var(--bg-elevated);
+  background: transparent;
   color: var(--text-primary);
   text-decoration: none; border-radius: 40px;
-  font-size: 0.8rem; font-weight: 700;
+  font-size: 0.8rem; font-weight: 600;
 }
 
 @media (max-width: 768px) {
